@@ -1,13 +1,14 @@
-<script setup>
-import errorImage from './assets/images/404.svg?raw'
+<script>
+export default {
+  name: 'ErrorPage',
+  props: {
+    error: Object
+  },
+  beforeCreate() {
+    if (process.client) {
+      window.location.replace('/dashboard/login');
+    }
+  },
+  render: () => null
+}
 </script>
-
-<template>
-  <NuxtLayout name="default">
-    <a
-      class="w-full h-full max-w-[600px] mx-auto flex items-center justify-center [&_svg]:w-full"
-      href="/"
-      v-html="errorImage"
-    />
-  </NuxtLayout>
-</template>
